@@ -8,4 +8,9 @@ public class DriverCollision : MonoBehaviour
     {
         //Debug.Log("ouch!");
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("speed!");
+    }
 }
