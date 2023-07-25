@@ -13,4 +13,9 @@ public class DriverCollision : MonoBehaviour
     {
         Debug.Log("speed!");
     }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("slowed");
+    }
 }
