@@ -14,19 +14,14 @@ public class DriverCollision : MonoBehaviour
         if (collision.tag == "Package")
         {
             Debug.Log("Picked up package!");
-            Debug.Log(collision.transform.position);
-
-        }
-        else
+        }else if (collision.tag == "Customer")
         {
-            Debug.Log("speed!");
-            Debug.Log(collision.name);
-            Debug.Log(collision.transform.position);
+            Debug.Log("Package delivered to customer!");
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        Debug.Log("slowed");
-    }
+    //void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    Debug.Log("slowed");
+    //}
 }
