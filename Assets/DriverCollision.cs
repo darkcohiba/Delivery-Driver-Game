@@ -11,7 +11,18 @@ public class DriverCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("speed!");
+        if (collision.tag == "Package")
+        {
+            Debug.Log("Picked up package!");
+            Debug.Log(collision.transform.position);
+
+        }
+        else
+        {
+            Debug.Log("speed!");
+            Debug.Log(collision.name);
+            Debug.Log(collision.transform.position);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
