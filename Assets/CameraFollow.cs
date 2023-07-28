@@ -12,6 +12,5 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         transform.position = car.transform.position + new Vector3(0, 0, -10);
-
     }
 }

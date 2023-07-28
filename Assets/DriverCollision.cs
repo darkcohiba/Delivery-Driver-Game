@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DriverCollision : MonoBehaviour
 {
+
+    bool hasPackage;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("ouch!");
@@ -14,9 +17,13 @@ public class DriverCollision : MonoBehaviour
         if (collision.tag == "Package")
         {
             Debug.Log("Picked up package!");
-        }else if (collision.tag == "Customer")
+            hasPackage = true;
+        }else if (collision.tag == "Customer" && hasPackage)
         {
             Debug.Log("Package delivered to customer!");
+        }else
+        {
+            Debug.Log("You dont have the package");
         }
     }
 
