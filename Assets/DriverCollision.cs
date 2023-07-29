@@ -21,6 +21,7 @@ public class DriverCollision : MonoBehaviour
         }else if (collision.tag == "Customer" && hasPackage)
         {
             Debug.Log("Package delivered to customer!");
+            hasPackage = false;
         }else
         {
             Debug.Log("You dont have the package");
