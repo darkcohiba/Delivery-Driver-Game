@@ -6,6 +6,7 @@ public class DriverCollision : MonoBehaviour
 {
 
     bool hasPackage;
+    //timeTillDestroy = 1;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -18,6 +19,7 @@ public class DriverCollision : MonoBehaviour
         {
             Debug.Log("Picked up package!");
             hasPackage = true;
+            Destroy(collision.gameObject);
         }else if (collision.tag == "Customer" && hasPackage)
         {
             Debug.Log("Package delivered to customer!");
