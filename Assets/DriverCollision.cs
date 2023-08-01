@@ -6,7 +6,7 @@ public class DriverCollision : MonoBehaviour
 {
 
     bool hasPackage;
-    //timeTillDestroy = 1;
+    [SerializeField] float timeTillDestroy = 0.5f;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -19,7 +19,7 @@ public class DriverCollision : MonoBehaviour
         {
             Debug.Log("Picked up package!");
             hasPackage = true;
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject, timeTillDestroy);
         }else if (collision.tag == "Customer" && hasPackage)
         {
             Debug.Log("Package delivered to customer!");
