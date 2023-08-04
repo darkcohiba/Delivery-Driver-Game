@@ -5,8 +5,8 @@ using UnityEngine;
 public class DriverCollision : MonoBehaviour
 {
 
-    [SerializeField] Color32 hasPackageColor = new Color32(1, 1, 1, 1);
-    [SerializeField] Color32 hasNoPackageColor = new Color32(1, 1, 1, 1);
+    [SerializeField] Color32 hasPackageColor = new Color32(0, 255, 30, 255);
+    [SerializeField] Color32 hasNoPackageColor = new Color32(250, 0, 0, 255);
 
 
     bool hasPackage;
