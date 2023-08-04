@@ -5,6 +5,10 @@ using UnityEngine;
 public class DriverCollision : MonoBehaviour
 {
 
+    [SerializeField] Color32 hasPackageColor = new Color32(1, 1, 1, 1);
+    [SerializeField] Color32 hasNoPackageColor = new Color32(1, 1, 1, 1);
+
+
     bool hasPackage;
     [SerializeField] float timeTillDestroy = 0.5f;
 
