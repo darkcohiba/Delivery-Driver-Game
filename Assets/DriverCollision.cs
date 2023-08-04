@@ -15,7 +15,7 @@ public class DriverCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Package")
+        if (collision.tag == "Package" && !hasPackage)
         {
             Debug.Log("Picked up package!");
             hasPackage = true;
