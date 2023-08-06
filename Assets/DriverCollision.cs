@@ -28,7 +28,9 @@ public class DriverCollision : MonoBehaviour
         {
             Debug.Log("Package delivered to customer!");
             hasPackage = false;
-        }else
+            Destroy(collision.gameObject, timeTillDestroy);
+        }
+        else
         {
             Debug.Log("You dont have the package");
         }
