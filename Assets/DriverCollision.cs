@@ -12,6 +12,18 @@ public class DriverCollision : MonoBehaviour
     bool hasPackage;
     [SerializeField] float timeTillDestroy = 0.5f;
 
+    SpriteRenderer spriteRenderer;
+    Color currentColor;
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        currentColor = spriteRenderer.color;
+        Debug.Log(currentColor);
+
+        
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("ouch!");
@@ -24,6 +36,7 @@ public class DriverCollision : MonoBehaviour
             Debug.Log("Picked up package!");
             hasPackage = true;
             Destroy(collision.gameObject, timeTillDestroy);
+            
         }else if (collision.tag == "Customer" && hasPackage)
         {
             Debug.Log("Package delivered to customer!");
