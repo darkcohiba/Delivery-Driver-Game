@@ -14,6 +14,7 @@ public class DriverCollision : MonoBehaviour
     [SerializeField] float timeTillDestroy = 0.2f;
 
     SpriteRenderer spriteRenderer;
+    
 
     //timer
     private float timer = 0.0f;
@@ -76,15 +77,6 @@ public class DriverCollision : MonoBehaviour
             //Debug.Log(package.color);
             spriteRenderer.color = dropOff.color;
             justDeliver = true;
-            Destroy(collision.gameObject, timeTillDestroy);
-
-
-
-        }
-        else if (collision.tag == "Boost")
-        {
-            //spriteRenderer.
-
             Destroy(collision.gameObject, timeTillDestroy);
 
         }

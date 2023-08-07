@@ -5,8 +5,13 @@ using UnityEngine;
 public class DriverScript : MonoBehaviour
 {
 
-    [SerializeField] float steerSpeed = 200;
-    [SerializeField] float moveSpeed = 15;
+    [SerializeField] float steerSpeed = 200f;
+    [SerializeField] float moveSpeed = 15f;
+    [SerializeField] float boostSpeed = 30f;
+    [SerializeField] float slowSpeed = 10f;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +26,13 @@ public class DriverScript : MonoBehaviour
 
         transform.Rotate(0, 0, -steerAmount);
         transform.Translate(0, moveAmount, 0);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Boost")
+        {
+            float steerAmount = Input.GetAxis("Horizontal") * boostSpeed * Time.deltaTime;
+        }
     }
 }
