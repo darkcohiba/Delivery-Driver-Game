@@ -13,13 +13,12 @@ public class DriverCollision : MonoBehaviour
     [SerializeField] float timeTillDestroy = 0.5f;
 
     SpriteRenderer spriteRenderer;
-    Color currentColor;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentColor = spriteRenderer.color;
-        Debug.Log(currentColor);
+        //Color32 currentColor = spriteRenderer.color;
+        //Debug.Log(currentColor);
 
         
     }
@@ -36,12 +35,16 @@ public class DriverCollision : MonoBehaviour
             Debug.Log("Picked up package!");
             hasPackage = true;
             Destroy(collision.gameObject, timeTillDestroy);
+            spriteRenderer.color = hasPackageColor;
+
             
         }else if (collision.tag == "Customer" && hasPackage)
         {
             Debug.Log("Package delivered to customer!");
             hasPackage = false;
             Destroy(collision.gameObject, timeTillDestroy);
+            spriteRenderer.color = hasNoPackageColor;
+
         }
         else
         {
