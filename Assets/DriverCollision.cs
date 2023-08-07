@@ -35,10 +35,19 @@ public class DriverCollision : MonoBehaviour
             Debug.Log("Picked up package!");
             hasPackage = true;
             Destroy(collision.gameObject, timeTillDestroy);
-            spriteRenderer.color = hasPackageColor;
-
             
-        }else if (collision.tag == "Customer" && hasPackage)
+            //spriteRenderer.color = hasPackageColor;
+
+            //dynamic color update
+            SpriteRenderer package = collision.gameObject.GetComponent<SpriteRenderer>();
+            //Debug.Log(package.color);
+            spriteRenderer.color = package.color;
+
+
+
+
+        }
+        else if (collision.tag == "Customer" && hasPackage)
         {
             Debug.Log("Package delivered to customer!");
             hasPackage = false;
