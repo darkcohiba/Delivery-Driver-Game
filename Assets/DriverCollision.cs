@@ -33,7 +33,6 @@ public class DriverCollision : MonoBehaviour
         if(justDeliver)
         {
             timer += Time.deltaTime;
-
         }
 
         if (!hasPackage && timer > 1.0f)
@@ -66,11 +65,6 @@ public class DriverCollision : MonoBehaviour
 
 
             Destroy(collision.gameObject, timeTillDestroy);
-
-
-
-
-
         }
         else if (collision.tag == "Customer" && hasPackage)
         {
@@ -85,6 +79,13 @@ public class DriverCollision : MonoBehaviour
             Destroy(collision.gameObject, timeTillDestroy);
 
 
+
+        }
+        else if (collision.tag == "Boost")
+        {
+            //spriteRenderer.
+
+            Destroy(collision.gameObject, timeTillDestroy);
 
         }
         else
