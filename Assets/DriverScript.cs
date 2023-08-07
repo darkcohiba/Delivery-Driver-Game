@@ -7,8 +7,9 @@ public class DriverScript : MonoBehaviour
 
     [SerializeField] float steerSpeed = 200f;
     [SerializeField] float moveSpeed = 15f;
-    [SerializeField] float boostSpeed = 30f;
+    [SerializeField] float boostSpeed = 100f;
     [SerializeField] float slowSpeed = 10f;
+    float moveAmount;
 
 
 
@@ -22,7 +23,7 @@ public class DriverScript : MonoBehaviour
     void Update()
     {
         float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
-        float moveAmount = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        moveAmount = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
         transform.Rotate(0, 0, -steerAmount);
         transform.Translate(0, moveAmount, 0);
@@ -32,7 +33,8 @@ public class DriverScript : MonoBehaviour
     {
         if (collision.tag == "Boost")
         {
-            float steerAmount = Input.GetAxis("Horizontal") * boostSpeed * Time.deltaTime;
+            moveAmount = Input.GetAxis("Horizontal") * boostSpeed * Time.deltaTime;
+            Debug.Log("Boosted!");
         }
     }
 }
