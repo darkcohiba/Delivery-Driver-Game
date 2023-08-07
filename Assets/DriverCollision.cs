@@ -9,10 +9,15 @@ public class DriverCollision : MonoBehaviour
     [SerializeField] Color32 hasNoPackageColor = new Color32(250, 0, 0, 255);
 
 
+
     bool hasPackage;
-    [SerializeField] float timeTillDestroy = 0.5f;
+    [SerializeField] float timeTillDestroy = 0.2f;
 
     SpriteRenderer spriteRenderer;
+
+    //timer
+    private float timer = 0.0f;
+    private bool justDeliver = false;
 
     void Start()
     {
@@ -21,6 +26,22 @@ public class DriverCollision : MonoBehaviour
         //Debug.Log(currentColor);
 
         
+    }
+
+    void Update()
+    {
+        if(justDeliver)
+        {
+            timer += Time.deltaTime;
+
+        }
+
+        if (!hasPackage && timer > 1.0f)
+        {
+            spriteRenderer.color = hasNoPackageColor;
+            timer = 0.0f;
+            justDeliver = false;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -34,14 +55,18 @@ public class DriverCollision : MonoBehaviour
         {
             Debug.Log("Picked up package!");
             hasPackage = true;
-            Destroy(collision.gameObject, timeTillDestroy);
-            
+
+            //color update by our built in colors
             //spriteRenderer.color = hasPackageColor;
 
             //dynamic color update
             SpriteRenderer package = collision.gameObject.GetComponent<SpriteRenderer>();
             //Debug.Log(package.color);
             spriteRenderer.color = package.color;
+
+
+            Destroy(collision.gameObject, timeTillDestroy);
+
 
 
 
@@ -53,6 +78,13 @@ public class DriverCollision : MonoBehaviour
             hasPackage = false;
             Destroy(collision.gameObject, timeTillDestroy);
             spriteRenderer.color = hasNoPackageColor;
+            SpriteRenderer dropOff = collision.gameObject.GetComponent<SpriteRenderer>();
+            //Debug.Log(package.color);
+            spriteRenderer.color = dropOff.color;
+            justDeliver = true;
+            Destroy(collision.gameObject, timeTillDestroy);
+
+
 
         }
         else
