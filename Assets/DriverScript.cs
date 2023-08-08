@@ -47,6 +47,14 @@ public class DriverScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        //if (collision.gameObject.tag == "WO")
+        //{
+        //    moveSpeed = slowSpeed;
+        //    justHit = true;
+        //}
+        Debug.Log("bang hit");
+
+
         moveSpeed = slowSpeed;
         justHit = true;
 
